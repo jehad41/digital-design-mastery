@@ -1,0 +1,297 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة احتراف التصميم الرقمي | IUG AI 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #0b0f17;
+        }
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+        .terminal-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .terminal-scroll::-webkit-scrollbar-track {
+            background: #0d1117;
+        }
+        .terminal-scroll::-webkit-scrollbar-thumb {
+            background: #1b2234;
+            border-radius: 3px;
+        }
+        .terminal-scroll::-webkit-scrollbar-thumb:hover {
+            background: #f1a80a;
+        }
+        .custom-checkbox:checked + label {
+            border-color: #f1a80a;
+            background-color: rgba(241, 168, 10, 0.08);
+        }
+        .custom-checkbox:checked + label .check-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="text-gray-100 min-h-screen flex flex-col p-3 md:p-6 selection:bg-amber-500 selection:text-black">
+
+    <div class="max-w-5xl w-full mx-auto bg-[#0f141c] rounded-xl border border-gray-800 shadow-2xl overflow-hidden flex flex-col flex-grow">
+        
+        <div class="bg-[#090d13] p-3 border-b border-gray-800 flex items-center justify-between text-xs text-gray-400 font-mono">
+            <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+                <span class="ml-2 text-gray-300 mr-2 code-font">student@iug:~/digital-design</span>
+            </div>
+            <div class="text-xs text-amber-500 font-bold code-font">IUG - AI ENGINEERING 2025</div>
+        </div>
+
+        <div id="selection-screen" class="p-4 md:p-8 flex-grow terminal-scroll overflow-y-auto">
+            <div class="mb-8">
+                <div class="code-font text-xs text-gray-500 mb-2">student@iug:~/digital-design$ ./mastery</div>
+                <h1 class="text-2xl md:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-600 flex items-center gap-3">
+                    <i class="fa-solid fa-microchip"></i> منصة احتراف التصميم الرقمي <span class="text-sm font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-500 border border-amber-500/20">v2.5 Console</span>
+                </h1>
+                <p class="text-xs text-gray-400 mt-2 leading-relaxed">
+                    منصة تدريبية شاملة لدفعة 2025 هندسة الذكاء الاصطناعي - الجامعة الإسلامية بغزة. تغطي المادة العلمية والأسئلة للامتحانات النصفية والنهائية والمسائل البرمجية والرسومات التوضيحية من الفصل الأول وحتى السادس.
+                </p>
+            </div>
+
+            <div class="mb-8">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-sm font-bold tracking-wider text-gray-400 uppercase flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-amber-500"></i> نطاق الدراسة - الفصول (SCOPE - CHAPTERS)
+                    </h2>
+                    <div class="flex gap-3 text-xs">
+                        <button onclick="selectAllChapters()" class="text-amber-500 hover:text-amber-400 transition font-medium">تحديد الكل</button>
+                        <span class="text-gray-700">|</span>
+                        <button onclick="clearAllChapters()" class="text-gray-500 hover:text-gray-400 transition font-medium">إلغاء التحديد</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="chapters-grid"></div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-sm font-bold tracking-wider text-gray-400 uppercase mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-graduation-cap text-amber-500"></i> بنوك الأسئلة الجاهزة والامتحانات الموجهة
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="exams-grid"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 border-t border-gray-800/60 pt-6">
+                <div>
+                    <h3 class="text-xs font-bold text-gray-400 uppercase mb-3">نوع الأسئلة (QUESTION SET)</h3>
+                    <div class="bg-[#090d13] p-1 rounded-lg border border-gray-800 flex gap-1">
+                        <button onclick="setQuestionSet('both')" id="qset-both" class="flex-1 py-1.5 px-3 rounded text-xs font-bold transition-all bg-amber-500 text-black">الكل</button>
+                        <button onclick="setQuestionSet('mcq')" id="qset-mcq" class="flex-1 py-1.5 px-3 rounded text-xs font-bold transition-all text-gray-400 hover:text-gray-200">اختيار متعدد</button>
+                        <button onclick="setQuestionSet('checkpoint')" id="qset-checkpoint" class="flex-1 py-1.5 px-3 rounded text-xs font-bold transition-all text-gray-400 hover:text-gray-200">فخاخ ورسومات</button>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xs font-bold text-gray-400 uppercase mb-3">خيارات التفاعل (OPTIONS)</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-300">تصحيح فوري بعد كل سؤال</span>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="immediate-feedback" class="sr-only peer" checked>
+                                <div class="w-9 h-5 bg-gray-800 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-gray-300 after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-amber-500"></div>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-300">ترتيب عشوائي للأسئلة</span>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="shuffle-questions" class="sr-only peer" checked>
+                                <div class="w-9 h-5 bg-gray-800 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-gray-300 after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-amber-500"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xs font-bold text-gray-400 uppercase mb-3">طول الجلسة (LENGTH)</h3>
+                    <div class="bg-[#090d13] p-1 rounded-lg border border-gray-800 flex gap-1">
+                        <button onclick="setLength('all')" id="len-all" class="flex-1 py-1.5 px-3 rounded text-xs font-bold transition-all bg-amber-500 text-black">كل الأسئلة</button>
+                        <button onclick="setLength('25')" id="len-25" class="flex-1 py-1.5 px-3 rounded text-xs font-bold transition-all text-gray-400 hover:text-gray-200">25 سؤال</button>
+                        <button onclick="setLength('40')" id="len-40" class="flex-1 py-1.5 px-3 rounded text-xs font-bold transition-all text-gray-400 hover:text-gray-200">40 سؤال</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-gray-800/60">
+                <div class="text-xs text-gray-500">
+                    <span class="text-amber-500 font-bold" id="pool-count">420</span> سؤال متوفر في قاعدة البيانات المدمجة.
+                </div>
+                <button onclick="startSession()" class="w-full md:w-auto px-8 py-3 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-black font-extrabold text-sm transition shadow-lg shadow-amber-500/10 flex items-center justify-center gap-2">
+                    ابدأ جلسة المذاكرة الآن <i class="fa-solid fa-terminal"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="quiz-screen" class="hidden p-4 md:p-6 flex-grow flex flex-col md:flex-row gap-6 overflow-hidden">
+            <div class="w-full md:w-64 bg-[#090d13] rounded-lg border border-gray-800 p-4 flex flex-col justify-between shrink-0">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-bold text-gray-400 uppercase">قائمة الأسئلة</span>
+                        <span id="quiz-timer" class="text-xs font-bold text-amber-500 code-font">00:00:00</span>
+                    </div>
+                    <div class="grid grid-cols-5 gap-2 max-h-[280px] md:max-h-[380px] overflow-y-auto terminal-scroll pr-1" id="questions-nav-grid"></div>
+                </div>
+                <div class="mt-4 pt-4 border-t border-gray-800/60">
+                    <button onclick="confirmExit()" class="w-full py-2 px-4 rounded bg-red-950/40 hover:bg-red-950/60 text-red-400 hover:text-red-300 border border-red-900/30 text-xs font-bold transition flex items-center justify-center gap-2">
+                        إنهاء الجلسة والعودة <i class="fa-solid fa-right-from-bracket"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex-grow bg-[#090d13]/40 rounded-lg border border-gray-800 p-4 md:p-6 flex flex-col justify-between overflow-y-auto terminal-scroll">
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between text-xs text-gray-400 border-b border-gray-800 pb-3">
+                        <span class="code-font" id="current-question-header">CH5 - SEQUENTIAL LOGIC</span>
+                        <span id="question-progress-text">سؤال 1 من 10</span>
+                    </div>
+
+                    <div class="w-full bg-gray-800 h-1 rounded-full overflow-hidden">
+                        <div id="question-progress-bar" class="bg-amber-500 h-full transition-all duration-300" style="width: 10%"></div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="text-base md:text-lg font-bold leading-relaxed text-gray-100" id="question-text"></div>
+                        <div id="question-image-container" class="hidden my-4 p-2 bg-[#090d13] rounded border border-gray-800 flex justify-center"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-2.5" id="options-container"></div>
+
+                    <div id="feedback-container" class="hidden p-4 rounded-lg border transition-all duration-300"></div>
+                </div>
+
+                <div class="flex items-center justify-between pt-6 border-t border-gray-800/60 mt-6">
+                    <button onclick="prevQuestion()" id="btn-prev" class="py-2 px-5 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-bold transition flex items-center gap-2">
+                        السابق <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button onclick="skipQuestion()" id="btn-skip" class="py-2 px-5 rounded bg-gray-800/40 hover:bg-gray-800/70 text-gray-400 text-xs font-bold transition">
+                        تخطي السؤال
+                    </button>
+                    <button onclick="nextQuestion()" id="btn-next" class="py-2 px-5 rounded bg-amber-500 hover:bg-amber-400 text-black text-xs font-extrabold transition flex items-center gap-2">
+                        التالي <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="results-screen" class="hidden p-6 md:p-8 flex-grow terminal-scroll overflow-y-auto">
+            <div class="text-center max-w-md mx-auto mb-8">
+                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-amber-500/10 text-amber-500 text-3xl mb-4 border border-amber-500/20">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <h2 class="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-600">ملخص أدائك في الاختبار</h2>
+                <p class="text-xs text-gray-400 mt-2">مراجعة أداء الامتحان والتقييم التفصيلي للفصول التي تمت تغطيتها.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-8">
+                <div class="bg-[#090d13] p-4 rounded-lg border border-gray-800 text-center">
+                    <div class="text-2xl font-bold text-amber-500 code-font" id="res-score">0 / 0</div>
+                    <div class="text-xs text-gray-400 mt-1">الأسئلة الصحيحة</div>
+                </div>
+                <div class="bg-[#090d13] p-4 rounded-lg border border-gray-800 text-center">
+                    <div class="text-2xl font-bold text-amber-500 code-font" id="res-percentage">0%</div>
+                    <div class="text-xs text-gray-400 mt-1">النسبة المئوية</div>
+                </div>
+                <div class="bg-[#090d13] p-4 rounded-lg border border-gray-800 text-center">
+                    <div class="text-2xl font-bold text-amber-500 code-font" id="res-time">00:00:00</div>
+                    <div class="text-xs text-gray-400 mt-1">الوقت المستغرق</div>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto mb-8 bg-[#090d13] rounded-lg border border-gray-800 overflow-hidden">
+                <div class="p-4 border-b border-gray-800 bg-[#0c111a] text-xs font-bold text-gray-400 uppercase tracking-wider">
+                    تحليل الأداء حسب الفصول (CHAPTERS ANALYSIS)
+                </div>
+                <div class="divide-y divide-gray-800/60" id="chapters-analysis-container"></div>
+            </div>
+
+            <div class="flex justify-center gap-4 max-w-md mx-auto">
+                <button onclick="resetSession()" class="flex-1 py-3 px-6 rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-bold text-sm transition">
+                    العودة للرئيسية وتخصيص اختبار آخر
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="exit-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-[#0f141c] border border-gray-800 rounded-xl p-6 max-w-sm w-full text-center">
+            <div class="w-12 h-12 rounded-full bg-red-500/10 text-red-500 text-xl inline-flex items-center justify-center mb-4 border border-red-500/20">
+                <i class="fa-solid fa-circle-exclamation"></i>
+            </div>
+            <h3 class="text-lg font-bold text-gray-100 mb-2">هل تريد إنهاء الجلسة؟</h3>
+            <p class="text-xs text-gray-400 mb-6 leading-relaxed">ستفقد تقدمك الحالي في هذا الاختبار ولن يتم حفظ نتائجك في ملخص الإحصائيات.</p>
+            <div class="flex gap-3">
+                <button onclick="confirmExitAction()" class="flex-1 py-2 px-4 rounded bg-red-600 hover:bg-red-500 text-white font-bold text-xs transition">نعم، إنهاء</button>
+                <button onclick="closeExitModal()" class="flex-1 py-2 px-4 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold text-xs transition">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const CHAPTERS = [
+            { id: "CH1", title: "CH1: Digital Systems", desc: "الأنظمة الرقمية، التحويلات، المتممات، الأعداد الثنائية الموقعة والـ BCD." },
+            { id: "CH2", title: "CH2: Boolean Algebra", desc: "جبر بول، البوابات المنطقية، الخصائص الأساسية وبوابات CMOS." },
+            { id: "CH3", title: "CH3: Minimization", desc: "خرائط كارنوف (K-Maps)، تبسيط التعابير البولينية، وبناء دوائر NAND/NOR." },
+            { id: "CH4", title: "CH4: Combinational", desc: "الدوائر التوافقية (Adders, Subtractors, Decoders, Multiplexers)." },
+            { id: "CH5", title: "CH5: Sequential Logic", desc: "المنطق التتابعي المتزامن، الـ Latches، القلابات، ونموذجي Mealy/Moore." },
+            { id: "CH6", title: "CH6: Registers & Counters", desc: "مسجلات الإزاحة، العدادات التموجية، العدادات المتزامنة والعداد الحلقي وجونسون." }
+        ];
+
+        const EXAMS = [
+            { id: "midterm2026", title: "Midterm Exam 2026", desc: "Chapters 1–5 · تم تجميعه بدقة متناهية من أسئلة الامتحانات النصفية لجامعتكم.", count: 12, chs: ["CH1", "CH2", "CH3", "CH4", "CH5"] },
+            { id: "finalConcepts", title: "Final Exam - Concepts & Tracing", desc: "أسئلة تتبع الدوائر وتدوير المسجلات وقوانين الفصول 5 و 6 للامتحان النهائي.", count: 10, chs: ["CH5", "CH6"] },
+            { id: "final2025", title: "Final Exam 2025", desc: "IUG · بنك الأسئلة الموحد للاختبارات النهائية لدفعة ذكاء اصطناعي.", count: 15, chs: ["CH1", "CH2", "CH3", "CH4", "CH5", "CH6"] },
+            { id: "traps", title: "Trap & Edge Cases", desc: "أسئلة الحالات الخاصة ومصائد الامتحانات والرسومات الصعبة من المنهج.", count: 8, chs: ["CH3", "CH5", "CH6"] }
+        ];
+
+        const QUESTIONS_POOL = [
+            {
+                id: 1,
+                chapter: "CH5",
+                type: "mcq",
+                question: "لتحويل قلاب من النوع D (D Flip-Flop) ليعمل كقلاب من النوع JK (JK Flip-Flop)، فإن المعادلة المميزة (Characteristic Equation) التي يجب تطبيقها على مدخل D هي:",
+                options: [
+                    "D = J Q' + Q K'",
+                    "D = J Q(p) + Q(p) K'",
+                    "D = J' Q(p) + Q(p) K",
+                    "D = J Q(p)' + K Q(p)'"
+                ],
+                correctIndex: 0,
+                explanation: "معادلة تحويل قلاب D ليعمل عمل قلاب JK هي: D = J Q' + Q K'. وهي دالة تضمن الانتقال إلى التشغيل (Set) عند J=1 والتصفير (Reset) عند K=1 وتبديل الحالة (Toggle) عند تفعيل الطرفين معاً."
+            },
+            {
+                id: 2,
+                chapter: "CH6",
+                type: "mcq",
+                question: "كم عدد الحالات المختلفة (Different States) التي يمتلكها عداد غير متزامن مكون من 2 بت (2-bit Asynchronous Counter)؟",
+                options: ["1", "2", "4", "8"],
+                correctIndex: 2,
+                explanation: "عداد ثنائي سعته n بت يمتلك دائماً 2 أس n من الحالات المختلفة. لدينا هنا عداد 2 بت، وبالتالي يمتلك 2^2 = 4 حالات مختلفة (وهي: 00، 01، 10، 11)."
+            },
+            {
+                id: 3,
+                chapter: "CH5",
+                type: "checkpoint",
+                question: "يقوم قلاب D ذو حافة تشغيل صاعدة (Positive Edge-Triggered D Flip-Flop) بتخزين القيمة المنطقية 1 عندما يكون:",
+                options: [
+                    "المدخل D في المستوى المرتفع (HIGH) والساعة تمر بمستوى منخفض (LOW)",
+                    "المدخل D في المستوى المرتفع (HIGH) وتنتقل الساعة من المستوى المرتفع إلى المنخفض (HIGH to LOW)",
+                    "المدخل D في المستوى المرتفع (HIGH) وتنتقل الساعة من المستوى المنخفض إلى المرتفع (LOW to HIGH)",
+                    "المدخل D في المستوى المرتفع (HIGH) والساعة تمر بمستوى مرتفع (HIGH)"
+                ],
+                correctIndex: 2,
+                explanation: "القلابات التي تعمل بالحافة الصاعدة (Positive Edge) تخزن البيانات وتستجيب لل
