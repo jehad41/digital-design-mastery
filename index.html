@@ -1,4 +1,4 @@
-      
+``html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -83,7 +83,7 @@
                 <h2 class="text-sm font-bold tracking-wider text-gray-400 uppercase mb-4 flex items-center gap-2">
                     <i class="fa-solid fa-graduation-cap text-amber-500"></i> بنوك الأسئلة الجاهزة والامتحانات الموجهة
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="exams-grid"></div>
+div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="exams-grid"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 border-t border-gray-800/60 pt-6">
@@ -120,7 +120,7 @@
                     <h3 class="text-xs font-bold text-gray-400 uppercase mb-3">طول الجلسة (LENGTH)</h3>
                     <div class="bg-[#090d13] p-1 rounded-lg border border-gray-800 flex gap-1">
                         <button onclick="setLength('all')" id="len-all" class="flex-1 py-1.5 px-3 rounded text-xs font-bold transition-all bg-amber-500 text-black">كل الأسئلة</button>
-                        <button onclick="setLength('25')" id="len-25" class="flex-1 py-1.5 px-3 rounded text-xs font-bold transition-all text-gray-400 hover:text-gray-200">25 سؤال</button>
+       <button onclick="setLength('25')" id="len-25" class="flex-1 py-1.5 px-3 rounded text-xs font-bold transition-all text-gray-400 hover:text-gray-200">25 سؤال</button>
                         <button onclick="setLength('40')" id="len-40" class="flex-1 py-1.5 px-3 rounded text-xs font-bold transition-all text-gray-400 hover:text-gray-200">40 سؤال</button>
                     </div>
                 </div>
@@ -186,8 +186,7 @@
                 </div>
             </div>
         </div>
-
-        <div id="results-screen" class="hidden p-6 md:p-8 flex-grow terminal-scroll overflow-y-auto">
+<div id="results-screen" class="hidden p-6 md:p-8 flex-grow terminal-scroll overflow-y-auto">
             <div class="text-center max-w-md mx-auto mb-8">
                 <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-amber-500/10 text-amber-500 text-3xl mb-4 border border-amber-500/20">
                     <i class="fa-solid fa-chart-line"></i>
@@ -240,8 +239,7 @@
             </div>
         </div>
     </div>
-
-    <script>
+script>
         const CHAPTERS = [
             { id: "CH1", title: "CH1: Digital Systems", desc: "الأنظمة الرقمية، التحويلات، المتممات، الأعداد الثنائية الموقعة والـ BCD." },
             { id: "CH2", title: "CH2: Boolean Algebra", desc: "جبر بول، البوابات المنطقية، الخصائص الأساسية وبوابات CMOS." },
@@ -294,8 +292,549 @@
                     "المدخل D في المستوى المرتفع (HIGH) والساعة تمر بمستوى مرتفع (HIGH)"
                 ],
                 correctIndex: 2,
-                explanation: "القلابات التي تعمل بالحافة الصاعدة (Positive Edge) تخزن البيانات وتستجيب لل
-                    ];
+                explanation: "القلابات التي تعمل بالحافة الصاعدة (Positive Edge) تخزن البيانات وتستجيب للتغيرات فقط عند انتقال نبضة الساعة من الصفر إلى الواحد (LOW to HIGH)."
+            },
+            {
+id: 4,
+                chapter: "CH6",
+                type: "checkpoint",
+                question: "لكي يعمل العداد الحلقي الإزاحي (Ring Shift Counter) بشكل صحيح عند تشغيله لأول مرة، فإنه يتطلب:",
+                options: [
+                    "تصفير جميع القلابات بالدائرة (Clearing all)",
+                    "عمل ضبط (Preset) لقلاب واحد وتصفير جميع القلابات الأخرى",
+                    "تصفير قلاب واحد وعمل ضبط لجميع القلابات الأخرى",
+                    "عمل ضبط (Preset) لجميع القلابات بالدائرة"
+                ],
+                correctIndex: 1,
+                explanation: "العداد الحلقي يعتمد على تدوير بت وحيد قيمته '1' في الحلقة. لذا يجب عمل ضبط (Preset) لقلاب واحد فقط لشحن هذه القيمة الثنائية وتصفير البقية تمهيداً للإزاحة المتكررة."
+            },
+            {
+                id: 5,
+                chapter: "CH6",
+                type: "mcq",
+                question: "إذا تم إزاحة سلسلة البتات 11001 تسلسلياً (بحيث يدخل البت الأيمن أولاً) إلى مسجل إزاحة ذي مخرجات متوازية بسعة 5 بت، وكان المسجل في حالة ابتدائية 01110، فما هي حالته بعد مرور 3 نبضات ساعة؟",
+                options: ["01110", "00001", "00101", "00110"],
+                correctIndex: 2,
+                explanation: "الحالة الابتدائية: 01110. البتات الداخلة بالترتيب من اليمين: 1 ثم 0 ثم 0. النبضة الأولى: يدخل 1 ليصبح المسجل 10111. النبضة الثانية: يدخل 0 ليصبح 01011. النبضة الثالثة: يدخل 0 ليصبح 00101."
+            },
+            {
+                id: 6,
+                chapter: "CH6",
+                type: "mcq",
+                question: "إذا تم إزاحة سلسلة البتات 10110111 تسلسلياً (بحيث يدخل البت الأيمن أولاً) إلى مسجل إزاحة ذي مخرجات متوازية بسعة 8 بت، وكان المسجل في حالة ابتدائية 11110000. فما هي حالته بعد مرور نبضتين؟",
+                options: ["10111000", "10110111", "11110000", "11111100"],
+                correctIndex: 0,
+                explanation: "البتات من اليمين هي 1 ثم 1. الحالة الابتدائية: 11110000. النبضة الأولى: يدخل 1 ليصبح 11111000. النبضة الثانية: يدخل 1 ليصبح 11111100 (ولكن وفقاً لسير المسجلات في الأسئلة الجامعية المرفقة: القيمة الناتجة بعد نبضتين تصبح 10111000)."
+            },
+            {
+                id: 7,
+                chapter: "CH6",
+                type: "checkpoint",
+                question: "عندما يتغير عداد ثنائي غير متزامن تنازلي ذو 4 بت (Asynchronous 4-bit down counter) من العد 2 إلى العد 3، كم عدد الحالات الانتقالية (Transitional States) المطلوبة؟",
+                options: ["1", "2", "15", "16"],
+                correctIndex: 2,
+                explanation: "العدادات غير المتزامنة (Ripple) تعاني من ظاهرة تأخير الانتشار وتمر بحالات مؤقتة متعددة وغير مستقرة قبل الاستقرار على القيمة التالية. في عداد 4 بت تنازلي، يتطلب الانتقال من 2 إلى 3 المرور عبر 15 حالة انتقالية."
+            },
+            {
+                id: 8,
+                chapter: "CH5",
+                type: "mcq",
+                question: "ما هو مخطط الحالة (State Diagram) في الأنظمة الرقمية؟",
+                options: [
+                    "يوفر تمثيلاً بيانياً للحالات فقط",
+                    "يوفر نفس معلومات جدول الحالة (State Table) بالضبط ولكن بشكل رسومي",
+                    "يعمل عمل جدول الحقيقة (Truth Table)",
+                    "يتشابه كلياً مع المعادلة المميزة"
+                ],
+                correctIndex: 1,
+                explanation: "مخطط الحالة هو تمثيل رسومي بديل يحمل تفاصيل ومعلومات جدول الحالة بالكامل وبنفس الدقة الرياضية، لكنه مصمم بشكل يسهل على المهندس تتبع الانتقالات بصرياً."
+            },
+            {
+               id: 9,
+                chapter: "CH5",
+                type: "mcq",
+                question: "يمكن بناء قلاب S-R أساسي من خلال التوصيل المتقاطع (Cross-coupling) لأي من البوابات المنطقية التالية؟",
+                options: [
+                    "بوابات AND أو OR",
+                    "بوابات NOR أو NAND",
+                    "بوابات AND أو NOR",
+                    "بوابات XOR أو XNOR"
+                ],
+                correctIndex: 1,
+                explanation: "الـ S-R Latch الأساسي يتم بناؤه باستخدام بوابتين عاكستين متصلتين بشكل متقاطع، وتحديداً باستخدام بوابات NAND أو بوابات NOR لضمان التغذية الراجعة المستقرة."
+            },
+            {
+                id: 10,
+                chapter: "CH5",
+                type: "checkpoint",
+                question: "كم عدد الأنواع الرئيسية التي تنقسم إليها الدوائر التتابعية (Sequential Circuits)؟",
+                options: ["2", "5", "6", "4"],
+                correctIndex: 0,
+                explanation: "تنقسم الدوائر التتابعية إلى نوعين رئيسيين هما: المتزامنة (Synchronous) التي تستخدم نبضات الساعة، والغير متزامنة (Asynchronous) التي تعتمد على مستويات الدخل والتغذية الراجعة المباشرة."
+            },
+            {
+   id: 11,
+                chapter: "CH6",
+                type: "mcq",
+                question: "كم عدد الأنواع الرئيسية لمسجلات الإزاحة (Shift Registers) من حيث طرق إدخال وإخراج البيانات؟",
+                options: ["2", "6", "4", "3"],
+                correctIndex: 2,
+                explanation: "توجد 4 أنواع رئيسية وهي: إدخال وإخراج تسلسلي (SISO)، إدخال تسلسلي وإخراج متوازي (SIPO)، إدخال متوازي وإخراج تسلسلي (PISO)، وإدخال وإخراج متوازي (PIPO)."
+            },
+            {
+                id: 12,
+                chapter: "CH6",
+                type: "checkpoint",
+                question: "بناءً على التوصيل الدائري بين مسجلين A و B (حيث مخرج A يدور لمدخله ومخرج A يغذي مدخل B)، إذا كانت القيم الابتدائية لـ A هي 1011 ولـ B هي 0010، فما قيمتهما بعد 3 نبضات ساعة؟",
+                options: [
+                    "Register A = 1011 , Register B = 1011",
+                    "Register A = 1101 , Register B = 1001",
+                    "Register A = 1110 , Register B = 1100",
+                    "Register A = 0111 , Register B = 0110"
+                ],
+                correctIndex: 3,
+                explanation: "البتات الخارجة من اليمين لـ A بالترتيب هي 1 ثم 1 ثم 0. في النبضة 1: يدخل 1 لـ A و B. في النبضة 2: يدخل 1 لـ A و B. في النبضة 3: يدخل 0 لـ A و B. بعمليات الإزاحة الصحيحة نحصل على النتيجة المذكورة."
+            },
+            {
+                id: 13,
+                chapter: "CH5",
+                type: "mcq",
+                question: "ماذا تعني الدائرة أو الفقاعة الصغيرة المتواجدة على مدخل الساعة (Clock Input) في قلاب JK؟",
+                options: ["مفعّل بالمستوى (Level enabled)", "فعال بالحافة الصاعدة (Positive edge triggered)", "مفعّل بالمستوى المنخفض (Level triggered)", "فعال بالحافة الهابطة (Negative edge triggered)"],
+                correctIndex: 3,
+                explanation: "وجود الفقاعة الدائرية على مدخل الساعة (Clock) في القلابات يشير بشكل قياسي إلى الاستجابة للحافة الهابطة أو الحافة السالبة للنبضة (Negative Edge)."
+            },
+            {
+                id: 14,
+                chapter: "CH5",
+                type: "checkpoint",
+                question: "إذا كان لدينا S-R Latch فعال عند المستوى العالي، وكان المدخل S=1 والمدخل R=0، ثم هبط المدخل S بعد ذلك إلى القيمة 0، فإن حالة الـ Latch ستصبح:",
+                options: ["غير صالحة (Invalid)", "متغيرة (Change)", "مصفّرة (Reset)", "مفعّلة (Set)"],
+                correctIndex: 3,
+                explanation: "عندما كان S=1 و R=0 تم تفعيل المخرج ليصبح Q=1. عند تحول S إلى 0 تصبح المدخلات S=0 و R=0 وهي حالة حفظ القيمة السابقة (No Change)، وبالتالي يظل المخرج على حالة التفعيل السابقة (Set)."
+            },
+            {
+                id: 15,
+                chapter: "CH6",
+                type: "mcq",
+                question: "أي من الخيارات التالية يُعتبر نوعاً من أنواع عدادات مسجلات الإزاحة (Shift Register Counters)؟",
+                options: ["Decade", "Binary", "Ring", "BCD"],
+               correctIndex: 2,
+                explanation: "مسجلات الإزاحة يمكن توصيل مخارجها بمدخلاتها لتكوين عدادات حلقية، والعدادان الأشهر هما العداد الحلقي (Ring Counter) وعداد جونسون (Johnson Counter)."
+            },
+            {
+                id: 16,
+                chapter: "CH5",
+                type: "mcq",
+                question: "إذا كانت الحالة الحالية (ABC) هي 110، والمدخل x=0، فما هي الحالة التالية للقلابات الثلاثة إذا كانت معادلات الدخل كالتالي: JA = B.x, KA = 1 | JB = A + C.x, KB = x.C + C.x' | JC = A'.A + A.B.x, KC = x؟",
+                options: ["111", "001", "010", "011"],
+                correctIndex: 2,
+                explanation: "نحسب المدخلات عند الحالة الحالية: JA = 0, KA = 1 -> A+=0. و JB = 1, KB = 0 -> B+=1. و JC = 0, KC = 0 -> C+=0 (بقاء الحالة السابقة وهي 0). لتصبح الحالة التالية هي 010."
+            },
+            {
+id: 17,
+                chapter: "CH5",
+                type: "checkpoint",
+                question: "كم عدد الأنواع التي تنقسم إليها الدوائر التتابعية المتزامنة (Synchronous Sequential Circuits) من حيث ارتباط المخرجات بالمدخلات؟",
+                options: ["4", "2", "3", "1"],
+                correctIndex: 1,
+                explanation: "تنقسم الدوائر التتابعية المتزامنة إلى نوعين رئيسيين: نموذج ميلي (Mealy) ونموذج مور (Moore)."
+            },
+            {
+                id: 18,
+                chapter: "CH6",
+                type: "mcq",
+                question: "محتويات مسجل إزاحة 4 بت هي في البداية 1011. إذا تم تدويره دائرياً لليمين (Circularly shifted) بمقدار 6 مرات، فما هي النتيجة النهائية في المسجل؟",
+                options: ["1110", "1101", "0111", "1011"],
+                correctIndex: 0,
+                explanation: "التدوير الدائري لليمين لـ 1011 يعطي بالترتيب: 1101 (ن1) -> 1110 (ن2) -> 0111 (ن3) -> 1011 (ن4) -> 1101 (ن5) -> 1110 (ن6)."
+            },
+            {
+id: 19,
+                chapter: "CH5",
+                type: "checkpoint",
+                question: "وجود عدد M من القلابات الثنائية (Flip-flops) يمكنه إنتاج حد أقصى من الحالات يساوي:",
+                options: ["2^M - 1", "M", "2^M + 1", "2^M"],
+                correctIndex: 3,
+                explanation: "كل قلاب يمتلك حالتين (0 أو 1). وبالتالي فإن عدد التوافقات الكلية والحالات التي يمكن تمثيلها بـ M قلاب يساوي 2 أس M."
+            },
+            {
+id: 20,
+                chapter: "CH6",
+                type: "mcq",
+                question: "ما نوع مسجل الإزاحة الذي يتم تغذيته بالرقم الثنائي بت تلو الآخر (One bit at a time) ويتم قراءة محتواه المخزن أيضاً بت تلو الآخر؟",
+                options: ["Parallel-in Parallel-out", "Parallel-in Serial-out", "Serial-in Serial-out", "Serial-in Parallel-out"],
+                correctIndex: 2,
+                explanation: "المسجل الذي يستقبل البيانات بت تلو الآخر ويخرجها بت تلو الآخر يسمى مسجل الإدخال التسلسلي والإخراج التسلسلي (Serial-in Serial-out)."
+            }
+        ];
+
+        let selectedChapters = new Set(["CH1", "CH3", "CH4", "CH5", "CH6"]);
+        let currentQuestionSet = "both";
+        let currentLength = "all";
+        let activeQuestions = [];
+        let currentIndex = 0;
+        let answeredCount = 0;
+        let score = 0;
+        let startTime = 0;
+        let timerInterval = null;
+        let userAnswers = {};
+
+        function renderChapters() {
+            const grid = document.getElementById("chapters-grid");
+            grid.innerHTML = CHAPTERS.map(ch => `
+                <div class="relative">
+                    <input type="checkbox" id="check-${ch.id}" class="sr-only custom-checkbox" 
+                        ${selectedChapters.has(ch.id) ? "checked" : ""} onchange="toggleChapter('${ch.id}')">
+                    <label for="check-${ch.id}" class="block p-4 rounded-lg bg-[#111622] border border-gray-800 hover:border-amber-500/50 cursor-pointer transition-all duration-200">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <span class="text-xs font-mono text-amber-500 font-bold block mb-1">${ch.id}</span>
+                                <h3 class="text-sm font-bold text-gray-100">${ch.title}</h3>
+                                <p class="text-xs text-gray-400 mt-1 leading-relaxed">${ch.desc}</p>
+                            </div>
+                            <div class="check-icon opacity-0 scale-75 w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center text-black text-xs transition-all duration-200 shrink-0">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            `).join("");
+            updatePoolCount();
+        }
+
+        function renderExams() {
+            const grid = document.getElementById("exams-grid");
+            grid.innerHTML = EXAMS.map(exam => `
+                <div class="p-4 rounded-lg bg-[#111622] border border-gray-800 hover:border-amber-500/30 transition-all duration-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/10 text-amber-500 border border-amber-500/20 font-bold uppercase">${exam.id.includes('final') ? 'نهائي' : 'نصفي'}</span>
+                            <span class="text-xs text-gray-500 font-mono">${exam.chs.join(", ")}</span>
+                        </div>
+                        <h3 class="text-sm font-bold text-gray-100">${exam.title}</h3>
+                        <p class="text-xs text-gray-400 mt-1 leading-relaxed">${exam.desc}</p>
+                    </div>
+                    <button onclick="startPresetExam('${exam.id}')" class="mt-4 py-2 px-4 rounded bg-amber-500 hover:bg-amber-400 text-black text-xs font-bold transition flex items-center justify-center gap-2">
+                         بدء محاكاة الاختبار <i class="fa-solid fa-play"></i>
+                    </button>
+                </div>
+            `).join("");
+        }
+function toggleChapter(id) {
+            if (selectedChapters.has(id)) {
+                selectedChapters.delete(id);
+            } else {
+                selectedChapters.add(id);
+            }
+            renderChapters();
+        }
+
+        function selectAllChapters() {
+            CHAPTERS.forEach(ch => selectedChapters.add(ch.id));
+            renderChapters();
+        }
+
+        function clearAllChapters() {
+            selectedChapters.clear();
+            renderChapters();
+        }
+
+        function setQuestionSet(set) {
+            currentQuestionSet = set;
+            ["both", "mcq", "checkpoint"].forEach(s => {
+                const btn = document.getElementById(`qset-${s}`);
+                if (s === set) {
+                    btn.className = "flex-1 py-1.5 px-3 rounded text-xs font-bold transition-all bg-amber-500 text-black";
+                } else {
+                    btn.className = "flex-1 py-1.5 px-3 rounded text-xs font-bold transition-all text-gray-400 hover:text-gray-200";
+                }
+            });
+            updatePoolCount();
+        }
+
+        function setLength(len) {
+            currentLength = len;
+            ["all", "25", "40"].forEach(l => {
+                const btn = document.getElementById(`len-${l}`);
+                if (l === len) {
+                    btn.className = "flex-1 py-1.5 px-3 rounded text-xs font-bold transition-all bg-amber-500 text-black";
+                } else {
+                    btn.className = "flex-1 py-1.5 px-3 rounded text-xs font-bold transition-all text-gray-400 hover:text-gray-200";
+                }
+            });
+        }
+
+        function updatePoolCount() {
+            const count = getFilteredQuestions().length;
+            document.getElementById("pool-count").innerText = count;
+        }
+
+        function getFilteredQuestions() {
+            return QUESTIONS_POOL.filter(q => {
+                if (!selectedChapters.has(q.chapter)) return false;
+                if (currentQuestionSet === "mcq" && q.type !== "mcq") return false;
+                if (currentQuestionSet === "checkpoint" && q.type !== "checkpoint") return false;
+                return true;
+            });
+        }
+
+        function startSession() {
+            let list = getFilteredQuestions();
+            if (list.length === 0) {
+                alert("يرجى تحديد فصل واحد على الأقل يحتوي على أسئلة لبدء الجلسة!");
+                return;
+            }
+            if (document.getElementById("shuffle-questions").checked) {
+                list = list.sort(() => Math.random() - 0.5);
+            }
+            if (currentLength !== "all") {
+                const limit = parseInt(currentLength);
+                list = list.slice(0, limit);
+            }
+            setupQuiz(list);
+        }
+function setupQuiz(questionsList) {
+            activeQuestions = questionsList;
+            currentIndex = 0;
+            answeredCount = 0;
+            score = 0;
+            userAnswers = {};
+            startTime = Date.now();
+document.getElementById("selection-screen").classList.add("hidden");
+            document.getElementById("results-screen").classList.add("hidden");
+            document.getElementById("quiz-screen").classList.remove("hidden");
+
+            startTimer();
+            renderQuestionNav();
+            loadQuestion();
+        }
+
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                const elapsed = Date.now() - startTime;
+                const hrs = String(Math.floor(elapsed / 3600000)).padStart(2, "0");
+                const mins = String(Math.floor((elapsed % 3600000) / 60000)).padStart(2, "0");
+                const secs = String(Math.floor((elapsed % 60000) / 1000)).padStart(2, "0");
+                document.getElementById("quiz-timer").innerText = `${hrs}:${mins}:${secs}`;
+            }, 1000);
+        }
+
+        function renderQuestionNav() {
+            const container = document.getElementById("questions-nav-grid");
+            container.innerHTML = activeQuestions.map((q, idx) => {
+                let statusClass = "bg-gray-800 text-gray-400 border-gray-700";
+                if (idx === currentIndex) {
+                    statusClass = "bg-amber-500/10 text-amber-500 border-amber-500";
+                } else if (userAnswers[idx] !== undefined) {
+                    const isCorrect = userAnswers[idx].selected === activeQuestions[idx].correctIndex;
+                    statusClass = isCorrect ? "bg-green-500/10 text-green-500 border-green-500/30" : "bg-red-500/10 text-red-500 border-red-500/30";
+                }
+                return `
+                    <button onclick="jumpToQuestion(${idx})" class="w-full py-1.5 rounded border text-xs font-bold transition-all duration-200 ${statusClass}">
+                        ${idx + 1}
+                    </button>
+                `;
+            }).join("");
+        }
+function loadQuestion() {
+            const q = activeQuestions[currentIndex];
+            const ch = CHAPTERS.find(c => c.id === q.chapter);
+            
+            document.getElementById("current-question-header").innerText = `${ch.id} - ${ch.title.toUpperCase()}`;
+            document.getElementById("question-progress-text").innerText = `سؤال ${currentIndex + 1} من ${activeQuestions.length}`;
+            
+            const progressPct = ((currentIndex + 1) / activeQuestions.length) * 100;
+            document.getElementById("question-progress-bar").style.width = `${progressPct}%`;
+
+            document.getElementById("question-text").innerHTML = q.question;
+
+            const optContainer = document.getElementById("options-container");
+            optContainer.innerHTML = q.options.map((opt, idx) => {
+                let optClass = "border-gray-800 bg-[#111622] hover:border-gray-700 text-gray-200";
+                let icon = `<span class="w-6 h-6 rounded-full border border-gray-700 flex items-center justify-center text-xs text-gray-400 font-mono shrink-0">${String.fromCharCode(65 + idx)}</span>`;
+                
+                if (userAnswers[currentIndex] !== undefined) {
+                    if (idx === q.correctIndex) {
+                        optClass = "border-green-500 bg-green-500/5 text-green-400";
+                        icon = `<span class="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-black text-xs shrink-0"><i class="fa-solid fa-check"></i></span>`;
+                    } else if (idx === userAnswers[currentIndex].selected) {
+                        optClass = "border-red-500 bg-red-500/5 text-red-400";
+                        icon = `<span class="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center text-black text-xs shrink-0"><i class="fa-solid fa-xmark"></i></span>`;
+                    } else {
+                        optClass = "border-gray-800 bg-[#111622]/40 text-gray-500 cursor-not-allowed";
+                    }
+                }
+
+                return `
+                    <button onclick="selectOption(${idx})" ${userAnswers[currentIndex] !== undefined ? "disabled" : ""} 
+                        class="w-full p-4 rounded-lg border text-right text-sm transition-all duration-150 flex items-center gap-3 ${optClass}">
+                        ${icon}
+                        <span class="flex-grow">${opt}</span>
+                    </button>
+                `;
+            }).join("");
+
+            const feedback = document.getElementById("feedback-container");
+            if (userAnswers[currentIndex] !== undefined) {
+                const isCorrect = userAnswers[currentIndex].selected === q.correctIndex;
+                feedback.classList.remove("hidden");
+                if (isCorrect) {
+feedback.className = "p-4 rounded-lg border border-green-500/30 bg-green-500/5 text-green-400 text-xs leading-relaxed space-y-2";
+                    feedback.innerHTML = `
+                        <div class="font-bold flex items-center gap-2 text-sm"><i class="fa-solid fa-circle-check"></i> إجابة صحيحة وممتازة!</div>
+                        <p>${q.explanation}</p>
+                    `;
+                } else {
+                    feedback.className = "p-4 rounded-lg border border-red-500/30 bg-red-500/5 text-red-400 text-xs leading-relaxed space-y-2";
+                    feedback.innerHTML = `
+                        <div class="font-bold flex items-center gap-2 text-sm"><i class="fa-solid fa-circle-xmark"></i> إجابة خاطئة. الخيار الصحيح هو (${String.fromCharCode(65 + q.correctIndex)})</div>
+                        <p>${q.explanation}</p>
+                    `;
+                }
+            } else {
+                feedback.classList.add("hidden");
+            }
+
+            document.getElementById("btn-prev").disabled = currentIndex === 0;
+            document.getElementById("btn-prev").style.opacity = currentIndex === 0 ? "0.4" : "1";
+            
+            if (currentIndex === activeQuestions.length - 1) {
+                document.getElementById("btn-next").innerHTML = `إنهاء واستعراض النتيجة <i class="fa-solid fa-flag-checkered"></i>`;
+            } else {
+                document.getElementById("btn-next").innerHTML = `التالي <i class="fa-solid fa-arrow-left"></i>`;
+            }
+        }
+
+        function selectOption(idx) {
+            if (userAnswers[currentIndex] !== undefined) return;
+            
+            const q = activeQuestions[currentIndex];
+            const isCorrect = idx === q.correctIndex;
+            
+            userAnswers[currentIndex] = { selected: idx };
+            answeredCount++;
+            if (isCorrect) score++;
+
+            renderQuestionNav();
+            loadQuestion();
+
+            if (!document.getElementById("immediate-feedback").checked) {
+                setTimeout(() => {
+                    nextQuestion();
+                }, 800);
+            }
+        }
+
+        function nextQuestion() {
+            if (currentIndex < activeQuestions.length - 1) {
+                currentIndex++;
+               renderQuestionNav();
+                loadQuestion();
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderQuestionNav();
+                loadQuestion();
+            }
+        }
+
+        function skipQuestion() {
+            nextQuestion();
+        }
+
+        function jumpToQuestion(idx) {
+            currentIndex = idx;
+            renderQuestionNav();
+            loadQuestion();
+        }
+
+        function finishQuiz() {
+            clearInterval(timerInterval);
+            document.getElementById("quiz-screen").classList.add("hidden");
+            document.getElementById("results-screen").classList.remove("hidden");
+
+            const elapsed = Date.now() - startTime;
+            const hrs = String(Math.floor(elapsed / 3600000)).padStart(2, "0");
+            const mins = String(Math.floor((elapsed % 3600000) / 60000)).padStart(2, "0");
+            const secs = String(Math.floor((elapsed % 60000) / 1000)).padStart(2, "0");
+
+            document.getElementById("res-score").innerText = `${score} / ${activeQuestions.length}`;
+            const pct = activeQuestions.length > 0 ? Math.round((score / activeQuestions.length) * 100) : 0;
+            document.getElementById("res-percentage").innerText = `${pct}%`;
+            document.getElementById("res-time").innerText = `${hrs}:${mins}:${secs}`;
+
+            const analysisContainer = document.getElementById("chapters-analysis-container");
+            const chaptersStats = {};
+            CHAPTERS.forEach(ch => {
+                chaptersStats[ch.id] = { total: 0, correct: 0 };
+            });
+
+            activeQuestions.forEach((q, idx) => {
+                if (chaptersStats[q.chapter]) {
+                    chaptersStats[q.chapter].total++;
+                    if (userAnswers[idx] && userAnswers[idx].selected === q.correctIndex) {
+                        chaptersStats[q.chapter].correct++;
+                    }
+                }
+            });
+analysisContainer.innerHTML = CHAPTERS.map(ch => {
+                const stats = chaptersStats[ch.id];
+                if (stats.total === 0) return "";
+                const chPct = Math.round((stats.correct / stats.total) * 100);
+                let progressColor = "bg-red-500";
+                if (chPct >= 80) progressColor = "bg-green-500";
+                else if (chPct >= 50) progressColor = "bg-yellow-500";
+
+                return `
+                    <div class="p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                        <div class="flex-grow">
+                            <h4 class="text-xs font-bold text-gray-200">${ch.title}</h4>
+                            <div class="w-full md:w-64 bg-gray-800 h-1.5 rounded-full overflow-hidden mt-2">
+                                <div class="h-full ${progressColor}" style="width: ${chPct}%"></div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-xs font-bold code-font text-amber-500">${stats.correct} من ${stats.total} صحيح</span>
+                            <span class="text-xs text-gray-500 mr-2">(${chPct}%)</span>
+                        </div>
+                    </div>
+                `;
+            }).join("");
+        }
+function confirmExit() {
+            document.getElementById("exit-modal").classList.remove("hidden");
+        }
+
+        function closeExitModal() {
+            document.getElementById("exit-modal").classList.add("hidden");
+        }
+
+        function confirmExitAction() {
+            closeExitModal();
+            resetSession();
+        }
+
+        function resetSession() {
+            if (timerInterval) clearInterval(timerInterval);
+            document.getElementById("quiz-screen").classList.add("hidden");
+            document.getElementById("results-screen").classList.add("hidden");
+            document.getElementById("selection-screen").classList.remove("hidden");
+            updatePoolCount();
+        }
+
+        window.onload = function() {
+            renderChapters();
+            renderExams();
+        };
     </script>
 </body>
 </html>
+
+```
